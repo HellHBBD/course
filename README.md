@@ -22,4 +22,4 @@ python search.py
 
 ## Hint
 
-Use the [Instant Data Scraper](https://chromewebstore.google.com/detail/instant-data-scraper/ofaokhiedipichpaobibbnahnkdoiiah) to get data from the NCKU course website.
+Use the [Instant Data Scraper](https://chromewebstore.google.com/detail/instant-data-scraper/ofaokhiedipichpaobibbnahnkdoiiah) to get data from the NCKU course website. For the input file format, please refer to the samples/ folder
