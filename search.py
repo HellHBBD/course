@@ -1,17 +1,23 @@
 import pandas as pd
+import unicodedata
+
+def calculate_width(text):
+    width = 0
+    for char in text:
+        if unicodedata.east_asian_width(char) in {'F', 'W'}:
+            width += 2
+        else:
+            width += 1
+    return width
 
 def print_df(df):
-    column_widths = [len(string) for string in df["course_name"]]
+    column_widths = [calculate_width(string) for string in df["course_name"]]
     max_width = max(column_widths)
 
-    print("course_name", end='')
-    print(' '*(max_width*2-11), end='')
-    print(" | students")
-    print('-'*(max_width*2+11))
+    print(f'{"course_name":<{max_width}} | students')
+    print('-'*(max_width+11))
     for index in range(df.shape[0]):
-        print(f"{df.iloc[index]['course_name']}", end='')
-        print(' '*(max_width-column_widths[index])*2, end='')
-        print(f" | {df.iloc[index]['students']}")
+        print(f"{df.iloc[index]['course_name']}{' ' * (max_width - column_widths[index])} | {df.iloc[index]['students']}")
 
 
 watch_list_path = "watch_list.txt"
